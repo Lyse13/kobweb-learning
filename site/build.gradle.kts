@@ -31,6 +31,7 @@ kotlin {
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
+            implementation(libs.silk.foundation)
             implementation(libs.kobwebx.markdown)
             implementation(project(":worker"))
         }
