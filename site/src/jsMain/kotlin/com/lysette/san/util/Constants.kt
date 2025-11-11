@@ -26,5 +26,10 @@ object Res {
         const val logo = "logo.svg"
         const val main = "main_image.png"
         const val about = "about_image.png"
+        const val portfolio1 = "portfolio1.png"
+        const val portfolio2 = "portfolio2.png"
+        const val portfolio3 = "portfolio3.png"
+        const val portfolio4 = "portfolio4.jpg"
+        const val portfolio5 = "portfolio5.png"
     }
 }

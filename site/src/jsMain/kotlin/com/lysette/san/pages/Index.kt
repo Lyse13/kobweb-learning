@@ -3,6 +3,7 @@ package com.lysette.san.pages
 import androidx.compose.runtime.Composable
 import com.lysette.san.sections.AboutSection
 import com.lysette.san.sections.MainSection
+import com.lysette.san.sections.PortfolioSection
 import com.lysette.san.sections.ServiceSection
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -22,5 +23,6 @@ fun HomePage() {
         MainSection()
         AboutSection()
         ServiceSection()
+        PortfolioSection()
     }
 }
