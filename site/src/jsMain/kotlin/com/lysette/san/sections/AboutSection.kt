@@ -2,8 +2,10 @@ package com.lysette.san.sections
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import com.lysette.san.components.SectionTitle
 import com.lysette.san.components.SkillBar
@@ -17,6 +19,7 @@ import com.lysette.san.util.Constants.LOREM_IPSUM_SHORT
 import com.lysette.san.util.Constants.SECTION_WIDTH
 import com.lysette.san.util.ObserveViewportEntered
 import com.lysette.san.util.Res
+import com.lysette.san.util.animatePercentage
 import com.varabyte.kobweb.compose.css.FontStyle
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -42,6 +45,7 @@ import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
@@ -105,12 +109,25 @@ fun AboutImage() {
 @Composable
 fun AboutMe() {
 
+    val scope = rememberCoroutineScope()
     var viewportEntered by remember { mutableStateOf(false) }
+    val animatedPercentage = remember { mutableStateListOf(0, 0, 0, 0, 0) }
+
     ObserveViewportEntered(
         sectionId = Section.About.id,
         distanceFromTop = 300.0,
         onViewportEntered = {
             viewportEntered = true
+            Skill.entries.forEach { skill ->
+                scope.launch {
+                    animatePercentage(
+                        percent = skill.percentage.value.toInt(),
+                        onUpdate = {
+                            animatedPercentage[skill.ordinal] = it
+                        }
+                    )
+                }
+            }
         }
     )
 
@@ -132,10 +149,12 @@ fun AboutMe() {
         ) {
             Text(LOREM_IPSUM_SHORT)
         }
-        Skill.values().forEach { skill ->
+        Skill.entries.forEach { skill ->
             SkillBar(
                 name = skill.title,
-                percentage = if (viewportEntered) skill.percentage else 0.percent
+                index = skill.ordinal,
+                percentage = if (viewportEntered) skill.percentage else 0.percent,
+                animatedPercentage = if (viewportEntered) animatedPercentage[skill.ordinal] else 0
             )
         }
     }
