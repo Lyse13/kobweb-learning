@@ -59,7 +59,6 @@ import org.jetbrains.compose.web.dom.Text
 @OptIn(DelicateApi::class)
 @Composable
 fun MainSection() {
-    val breakpoint = rememberBreakpoint()
 
     Box(
         modifier = Modifier
@@ -68,7 +67,7 @@ fun MainSection() {
         contentAlignment = Alignment.TopCenter
     ) {
         MainBackground()
-        MainContent(breakpoint = breakpoint)
+        MainContent()
     }
 }
 
@@ -83,8 +82,10 @@ fun MainBackground() {
     )
 }
 
+@OptIn(DelicateApi::class)
 @Composable
-fun MainContent(breakpoint: Breakpoint) {
+fun MainContent() {
+    val breakpoint = rememberBreakpoint()
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween,

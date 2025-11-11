@@ -1,6 +1,7 @@
 package com.lysette.san.pages
 
 import androidx.compose.runtime.Composable
+import com.lysette.san.sections.AboutSection
 import com.lysette.san.sections.MainSection
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -18,5 +19,6 @@ fun HomePage() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         MainSection()
+        AboutSection()
     }
 }
