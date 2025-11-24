@@ -19,7 +19,7 @@ import com.lysette.san.util.Constants.LOREM_IPSUM_SHORT
 import com.lysette.san.util.Constants.SECTION_WIDTH
 import com.lysette.san.util.ObserveViewportEntered
 import com.lysette.san.util.Res
-import com.lysette.san.util.animatePercentage
+import com.lysette.san.util.animateNumbers
 import com.varabyte.kobweb.compose.css.FontStyle
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -120,8 +120,8 @@ fun AboutMe() {
             viewportEntered = true
             Skill.entries.forEach { skill ->
                 scope.launch {
-                    animatePercentage(
-                        percent = skill.percentage.value.toInt(),
+                    animateNumbers(
+                        number = skill.percentage.value.toInt(),
                         onUpdate = {
                             animatedPercentage[skill.ordinal] = it
                         }

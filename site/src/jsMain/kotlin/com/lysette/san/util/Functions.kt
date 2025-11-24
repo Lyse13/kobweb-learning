@@ -8,9 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import kotlinx.browser.document
 import kotlinx.browser.window
-import kotlinx.coroutines.Delay
 import kotlinx.coroutines.delay
-import org.jetbrains.compose.web.css.CSSUnit
 import org.w3c.dom.events.EventListener
 
 @Composable
@@ -38,12 +36,12 @@ fun ObserveViewportEntered(
     }
 }
 
-suspend fun animatePercentage(
-    percent: Int,
+suspend fun animateNumbers(
+    number: Int,
     delay: Long = 10L,
     onUpdate: (Int) -> Unit
 ) {
-    (0..percent).forEach {
+    (0..number).forEach {
         delay(delay)
         onUpdate(it)
     }

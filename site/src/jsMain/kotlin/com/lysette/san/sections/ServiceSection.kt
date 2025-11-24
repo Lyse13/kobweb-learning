@@ -49,7 +49,9 @@ fun ServiceContent() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SectionTitle(
-            modifier = Modifier.fillMaxWidth().margin(bottom = 20.px),
+            modifier = Modifier
+                .fillMaxWidth()
+                .margin(bottom = 20.px),
             section = Section.Service,
             alignment = Alignment.CenterHorizontally
         )
