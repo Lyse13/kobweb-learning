@@ -3,6 +3,7 @@ package com.lysette.san.pages
 import androidx.compose.runtime.Composable
 import com.lysette.san.sections.AboutSection
 import com.lysette.san.sections.AchievementsSection
+import com.lysette.san.sections.ExperienceSection
 import com.lysette.san.sections.MainSection
 import com.lysette.san.sections.PortfolioSection
 import com.lysette.san.sections.ServiceSection
@@ -28,5 +29,6 @@ fun HomePage() {
         PortfolioSection()
         AchievementsSection()
         TestimonialSection()
+        ExperienceSection()
     }
 }
